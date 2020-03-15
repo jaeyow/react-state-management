@@ -8,10 +8,11 @@ const AppContext = React.createContext();
 function Container() {
   const {
     counter
-  } = useContext(AppContext);
+  } = useContext(AppContext); // consume context in functional component
 
   console.log(`Container: ${counter}`)
-  return (<Counter />
+  return (
+    <Counter />
   );
 };
 
@@ -50,39 +51,69 @@ function AppProvider(props) {
   );
 }
 
-function Counter() {
-  const {
-      counter,
-      increment,
-      decrement,
-      incrementIfOdd,
-      incrementAsync
-    } = useContext(AppContext);
-  
+class Counter extends React.Component {
+
+  static contextType = AppContext; // consume context in class based component
+  render() {
+    var value = this.context;
     return (
       <div>
         <p>
-          Clicked: {counter} times
+          Clicked: {value.counter} times
           {' '}
-          <button onClick={increment}>
+          <button onClick={value.increment}>
             +
           </button>
           {' '}
-          <button onClick={decrement}>
+          <button onClick={value.decrement}>
             -
           </button>
           {' '}
-          <button onClick={incrementIfOdd}>
+          <button onClick={value.incrementIfOdd}>
             Increment if odd
           </button>
           {' '}
-          <button  onClick={incrementAsync}>
+          <button  onClick={value.incrementAsync}>
             Increment async
           </button>
         </p>
       </div>
     );
   }
+
+  // consume context in functional component
+  // const {
+  //     counter,
+  //     increment,
+  //     decrement,
+  //     incrementIfOdd,
+  //     incrementAsync
+  //   } = useContext(AppContext);
+  
+  //   return (
+  //     <div>
+  //       <p>
+  //         Clicked: {counter} times
+  //         {' '}
+  //         <button onClick={increment}>
+  //           +
+  //         </button>
+  //         {' '}
+  //         <button onClick={decrement}>
+  //           -
+  //         </button>
+  //         {' '}
+  //         <button onClick={incrementIfOdd}>
+  //           Increment if odd
+  //         </button>
+  //         {' '}
+  //         <button  onClick={incrementAsync}>
+  //           Increment async
+  //         </button>
+  //       </p>
+  //     </div>
+  //   );
+}
           
 export default class App extends React.Component {
   render() {
