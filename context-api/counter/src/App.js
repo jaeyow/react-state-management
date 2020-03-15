@@ -1,4 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, {
+  useState,
+  useContext
+} from 'react';
 const AppContext = React.createContext();
 
 function AppProvider(props) {
@@ -6,32 +9,44 @@ function AppProvider(props) {
 
   var increment = () => {
     setCount(counter + 1);
-	};
+  };
 
-	var decrement = () => {
-		setCount(counter - 1);
-	}
+  var decrement = () => {
+    setCount(counter - 1);
+  }
 
-	var incrementIfOdd = () => {
-		if (counter % 2 !== 0) {
-			increment();
-		}
+  var incrementIfOdd = () => {
+    if (counter % 2 !== 0) {
+      increment();
+    }
   }
 
   var incrementAsync = () => {
     setTimeout(increment, 1000);
-  }  
-    
-  const value = { counter, increment, decrement, incrementIfOdd, incrementAsync }
+  }
+
+  const value = {
+    counter,
+    increment,
+    decrement,
+    incrementIfOdd,
+    incrementAsync
+  }
   return (
-    <AppContext.Provider value={value}>
+    <AppContext.Provider value = {value}>
       {props.children}
     </AppContext.Provider>
   );
 }
 
 function CounterApp() {
-  const { counter, increment, decrement, incrementIfOdd, incrementAsync } = useContext(AppContext);
+  const {
+    counter,
+    increment,
+    decrement,
+    incrementIfOdd,
+    incrementAsync
+  } = useContext(AppContext);
   return (
     <div>
       <p>
@@ -49,7 +64,7 @@ function CounterApp() {
           Increment if odd
         </button>
         {' '}
-        <button onClick={incrementAsync}>
+        <button  onClick={incrementAsync}>
           Increment async
         </button>
       </p>
@@ -58,10 +73,10 @@ function CounterApp() {
 }
 
 export default class App extends React.Component {
-  render () {
+  render() {
     return (
-      <AppProvider>
-        <CounterApp/>
+      <AppProvider >
+          <CounterApp />
       </AppProvider>
     );
   }
