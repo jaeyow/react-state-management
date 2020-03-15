@@ -2,7 +2,17 @@ import React, {
   useState,
   useContext
 } from 'react';
+
 const AppContext = React.createContext();
+
+function Container () {
+  const { counter } = useContext(AppContext);
+
+  console.log(`Container: ${counter}`)
+  return (
+    <Counter />
+  );
+};
 
 function AppProvider(props) {
   const [counter, setCount] = useState(0);
@@ -39,7 +49,7 @@ function AppProvider(props) {
   );
 }
 
-function CounterApp() {
+function Counter() {
   const {
     counter,
     increment,
@@ -47,6 +57,7 @@ function CounterApp() {
     incrementIfOdd,
     incrementAsync
   } = useContext(AppContext);
+
   return (
     <div>
       <p>
@@ -76,7 +87,7 @@ export default class App extends React.Component {
   render() {
     return (
       <AppProvider >
-          <CounterApp />
+          <Container />
       </AppProvider>
     );
   }
