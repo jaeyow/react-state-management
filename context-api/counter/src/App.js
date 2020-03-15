@@ -5,12 +5,14 @@ import React, {
 
 const AppContext = React.createContext();
 
-function Container () {
-  const { counter } = useContext(AppContext);
+function Container() {
+  const {
+    counter
+  } = useContext(AppContext);
 
   console.log(`Container: ${counter}`)
-  return (
-    <Counter />
+  return ( <
+    Counter / >
   );
 };
 
@@ -42,10 +44,13 @@ function AppProvider(props) {
     incrementIfOdd,
     incrementAsync
   }
-  return (
-    <AppContext.Provider value = {value}>
-      {props.children}
-    </AppContext.Provider>
+  return ( <
+    AppContext.Provider value = {
+      value
+    } > {
+      props.children
+    } <
+    /AppContext.Provider>
   );
 }
 
@@ -58,37 +63,57 @@ function Counter() {
     incrementAsync
   } = useContext(AppContext);
 
-  return (
-    <div>
-      <p>
-        Clicked: {counter} times
-        {' '}
-        <button onClick={increment}>
-          +
-        </button>
-        {' '}
-        <button onClick={decrement}>
-          -
-        </button>
-        {' '}
-        <button onClick={incrementIfOdd}>
-          Increment if odd
-        </button>
-        {' '}
-        <button  onClick={incrementAsync}>
-          Increment async
-        </button>
-      </p>
-    </div>
+  return ( <
+    div >
+    <
+    p >
+    Clicked: {
+      counter
+    }
+    times {
+      ' '
+    } <
+    button onClick = {
+      increment
+    } >
+    +
+    <
+    /button> {
+      ' '
+    } <
+    button onClick = {
+      decrement
+    } >
+    -
+    <
+    /button> {
+      ' '
+    } <
+    button onClick = {
+      incrementIfOdd
+    } >
+    Increment
+    if odd <
+    /button> {
+      ' '
+    } <
+    button onClick = {
+      incrementAsync
+    } >
+    Increment async </button> <
+    /p> <
+    /div>
   );
 }
 
 export default class App extends React.Component {
   render() {
-    return (
-      <AppProvider >
-          <Container />
-      </AppProvider>
+    return ( <
+      AppProvider >
+      <
+      Container / >
+      <
+      /AppProvider>
     );
   }
 }
