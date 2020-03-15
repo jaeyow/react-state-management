@@ -1,4 +1,6 @@
-import {observable, action} from 'mobx';
+import {
+	observable
+} from 'mobx';
 
 export default class CounterStore {
 	@observable counter = 0;
@@ -15,9 +17,9 @@ export default class CounterStore {
 		if (this.counter % 2 !== 0) {
 			this.increment();
 		}
-	  }
+	}
 
-	  incrementAsync = () => {
+	incrementAsync = () => {
 		setTimeout(this.increment, 1000)
-	  }
+	}
 }
