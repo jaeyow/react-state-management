@@ -18,16 +18,16 @@ function AppProvider(props) {
 		}
   }
 
-	  var incrementAsync = () => {
-		  setTimeout(increment, 1000)
-    }  
+  var incrementAsync = () => {
+    setTimeout(increment, 1000);
+  }  
     
-    const value = { counter, increment, decrement, incrementIfOdd, incrementAsync }
-    return (
-      <AppContext.Provider value={value}>
-        {props.children}
-      </AppContext.Provider>
-    )
+  const value = { counter, increment, decrement, incrementIfOdd, incrementAsync }
+  return (
+    <AppContext.Provider value={value}>
+      {props.children}
+    </AppContext.Provider>
+  );
 }
 
 function CounterApp() {
