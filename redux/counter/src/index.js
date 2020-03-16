@@ -10,13 +10,26 @@ const store = createStore(counter)
 const rootEl = document.getElementById('root')
 
 const render = () => ReactDOM.render(
-  <Counter
-    value={store.getState()}
-    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-  />,
+  <App/>,
   rootEl
 )
 
 render()
 store.subscribe(render)
+
+function App (props) {
+  return (
+    <Container/>
+  );
+};
+
+function Container (props) {
+  return (
+    <Counter
+        value={store.getState()}
+        onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+        onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+      />
+  );
+};
+
