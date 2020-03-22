@@ -1,10 +1,31 @@
-import React from 'react';
-import { observer } from 'mobx-react';
+import React, {createContext} from 'react';
+import { observer, Provider } from 'mobx-react';
+import CounterStore from './counterStore';
 
-@observer
 export default class App extends React.Component {
   render () {
-    const { counterStore } = this.props;
+    return (
+      <Provider counterStore={new CounterStore()}>
+        <Container/>
+      </Provider>
+    );
+  }
+}
+
+const CounterContext = createContext(new CounterStore())
+
+function useStore() {
+  return React.useContext(CounterContext)
+}
+
+const Container = () => {
+  return (
+    <Counter />
+  );
+}
+
+const Counter = observer(() => {
+    const counterStore = useStore();
     return (
       <div>
         <p>
@@ -28,5 +49,5 @@ export default class App extends React.Component {
         </p>
       </div>
     );
-  }
-}
+});
+

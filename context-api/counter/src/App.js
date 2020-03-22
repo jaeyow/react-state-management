@@ -1,14 +1,9 @@
-import React, {
-  useState,
-  useContext
-} from 'react';
+import React, { useState, useContext } from 'react';
 
 const AppContext = React.createContext();
 
 function Container() {
-  const {
-    counter
-  } = useContext(AppContext); // consume context in functional component
+  const { counter } = useContext(AppContext); // consume context in functional component
 
   console.log(`Container: ${counter}`)
   return (
@@ -37,13 +32,8 @@ function AppProvider(props) {
     setTimeout(increment, 1000);
   }
 
-  const value = {
-    counter,
-    increment,
-    decrement,
-    incrementIfOdd,
-    incrementAsync
-  }
+  const value = { counter, increment, decrement, incrementIfOdd, incrementAsync };
+  
   return (
   <AppContext.Provider value={value}>
     { props.children }

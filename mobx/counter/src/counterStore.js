@@ -1,9 +1,8 @@
-import {
-	observable
-} from 'mobx';
+import { observable } from 'mobx';
 
 export default class CounterStore {
-	@observable counter = 0;
+	@observable
+	counter = 0;
 
 	increment = () => {
 		this.counter = this.counter + 1;
